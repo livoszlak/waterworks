@@ -18,3 +18,24 @@ export const fetchToday = async () => {
 };
 
 fetchToday();
+
+export const fetchDates = async () => {
+  try {
+    let site = "Garda";
+    let parameter = "Level";
+    let fromDate = "2022-04-11";
+    let toDate = "2022-05-11";
+
+    const response = await fetch(
+      `https://data.goteborg.se/RiverService/v1.1/Measurements/8829bff0-535f-4573-a5ab-775d6b20b638/${site}/${parameter}/${fromDate}/${toDate}?format=json`,
+    );
+
+    const dateData = await response.json();
+
+    console.log(dateData);
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
+
+fetchDates();
