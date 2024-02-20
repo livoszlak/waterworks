@@ -36,8 +36,8 @@ export const fetchDates = async () => {
 
     const dateData = await response.json();
 
-    // console.log(dateData);
-    console.log(site);
+    /* console.log(dateData); */
+    return dateData;
   } catch (error) {
     console.error("Error", error);
   }
