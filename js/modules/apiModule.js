@@ -24,15 +24,16 @@ export const fetchDates = async () => {
     let site = "Garda";
     let parameter = "Level";
     let fromDate = "2022-04-11";
-    let toDate = "2022-05-11";
+    let toDate = "2022-07-11";
 
     const response = await fetch(
-      `https://data.goteborg.se/RiverService/v1.1/Measurements/8829bff0-535f-4573-a5ab-775d6b20b638/${site}/${parameter}/${fromDate}/${toDate}?format=json`,
+      `https://data.goteborg.se/RiverService/v1.1/Measurements/8829bff0-535f-4573-a5ab-775d6b20b638/${site}/${parameter}/${fromDate}/${toDate}?format=json`
     );
 
     const dateData = await response.json();
 
-    console.log(dateData);
+    /* console.log(dateData); */
+    return dateData;
   } catch (error) {
     console.error("Error", error);
   }
