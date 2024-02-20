@@ -1,12 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
     <title>Waterworks</title>
   </head>
   <body>
     <h1>Waterworks</h1>
-    <script type="module" src="fetch.js"></script>
+    <div style="width: 800px"><canvas id="data"></canvas></div>
+    <script type="module" src="chartModule.js"></script>
   </body>
 </html>
