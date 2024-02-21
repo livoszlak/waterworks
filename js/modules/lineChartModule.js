@@ -9,7 +9,7 @@ import { fetchDates } from "./apiModule.js";
   });
 
   var labels = [];
-  for (let i = 1; i < threeMonths.length + 1; i++) {
+  for (let i = 1; i < threeMonths.length / 3; i++) {
     labels.push(i);
   }
   console.log(labels);
