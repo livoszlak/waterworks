@@ -13,45 +13,35 @@ export const fetchToday = async () => {
 
 fetchToday();
 
-const dropDownTag = document.getElementById("locationDropdown");
+// const dropDownTag = document.getElementById("locationDropdown");
 
-// change location from dropdownmenu
-dropDownTag.addEventListener("change", () => {
-  site = dropDownTag.value;
-  console.log(site);
-  fetchDates();
-});
+// // change location from dropdownmenu
+// dropDownTag.addEventListener("change", () => {
+//   site = dropDownTag.value;
+//   console.log(site);
+//   fetchDates();
+// });
 
-let today = new Date();
-console.log(today);
-let todaysDate = formatDate(today);
-console.log(todaysDate);
-let todayUnix = Math.floor(today.getTime() / 1000);
-console.log(todayUnix);
-let twoWeeksBackUnix = todayUnix - 1209600;
-console.log(twoWeeksBackUnix);
-let twoWeeksDate = new Date(twoWeeksBackUnix * 1000);
-console.log(twoWeeksDate);
-let fromDate = formatDate(twoWeeksDate);
-console.log(fromDate);
-let twoWeeksBack = twoWeeksBackUnix;
-
-let site = dropDownTag.value;
-let parameter = "Level";
-
-// let fromDate = twoWeeksBack;
-
-let toDate = todaysDate;
-
-console.log(todaysDate);
-
-export const fetchDates = async () => {
+export const fetchDates = async (date, place) => {
   try {
+    let today = new Date();
+    let todaysDate = formatDate(today);
+    console.log(date);
+    console.log(place);
+    // let todayUnix = Math.floor(today.getTime() / 1000);
+    // let twoWeeksBackUnix = todayUnix - 1209600;
+    // let twoWeeksDate = new Date(twoWeeksBackUnix * 1000);
+
+    let site = place;
+    let parameter = "Level";
+
+    let fromDate = date;
+    let toDate = todaysDate;
     const response = await fetch(
       `https://data.goteborg.se/RiverService/v1.1/Measurements/8829bff0-535f-4573-a5ab-775d6b20b638/${site}/${parameter}/${fromDate}/${toDate}?format=json`,
     );
 
-    const dateData = await response.json();
+    let dateData = await response.json();
 
     return dateData;
   } catch (error) {
@@ -59,12 +49,12 @@ export const fetchDates = async () => {
   }
 };
 
-fetchDates();
+// fetchDates();
 
 // const date = new Date("year", "month", "day");
 // console.log(date);
 
-function formatDate(date) {
+export function formatDate(date) {
   return (
     date.getFullYear() +
     "-" +
@@ -74,24 +64,44 @@ function formatDate(date) {
   );
 }
 
-// todays date
-// const today = new Date();
+/* window.onload = function () { */
+const btns = document.querySelectorAll("dateButton");
+/*   const weeksBtn = document.querySelector("weeksBtn");
+  const monthsBtn = document.querySelector("monthsBtn");
+  const yearBtn = document.querySelector("yearBtn"); */
+const dropDownTag = document.getElementById("locationDropdown");
 
-// one day in seconds
-// const oneDay = 24 * 60 * 60;
-// // two weeks in seconds
-// const twoWeeks = 2 * 7 * 24 * 60 * 60 * 1000;
-// // three months in seconds
-// const threeMonths = oneDay * 90;
-// // console.log(threeMonths);
+dropDownTag.addEventListener("change", () => {
+  let site = dropDownTag.value;
+  console.log(site);
+  fetchDates();
+});
 
-// const dateTwoWeeksAgo = new Date(today.getTime() - twoWeeks);
-// // console.log(today.getTime());
-// const dateThreeMonthsAgo = new Date(today.getTime() - threeMonths);
+// btns.forEach(button, function () {
+//   button.addEventListener("click", () => {});
+// });
 
-// const twoWeeksAgoDate = formatDate(dateTwoWeeksAgo);
-// const threeMonthsAgoDate = formatDate(dateThreeMonthsAgo);
-// console.log(twoWeeks);
-// console.log(todaysDate);
-// console.log(twoWeeksAgoDate);
-// console.log(threeMonthsAgoDate);
+const weeksBtn = document.querySelector("#weeksBtn");
+const monthsBtn = document.querySelector("#monthsBtn");
+const yearBtn = document.querySelector("#yearBtn");
+
+weeksBtn.addEventListener("click", () => {
+  let today = new Date();
+  let todaysDate = formatDate(today);
+  let todayUnix = Math.floor(today.getTime() / 1000);
+  let twoWeeksBackUnix = todayUnix - parseInt(weeksBtn.value);
+  console.log(twoWeeksBackUnix);
+  let twoWeeksDate = new Date(twoWeeksBackUnix * 1000);
+  console.log(formatDate(twoWeeksDate));
+  let date = formatDate(twoWeeksDate);
+  let site = dropDownTag.value;
+
+  // let fromDate = formatDate(date);
+
+  // let twoWeeksbackUnix = dateUnix -;
+  // console.log(twoWeeksbackUnix);
+  console.log(weeksBtn.value);
+
+  fetchDates(date, site);
+});
+/* }; */
