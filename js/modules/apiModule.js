@@ -15,18 +15,24 @@ fetchToday();
 
 const dropDownTag = document.getElementById("locationDropdown");
 
-// const dropDownTag = document.querySelectorAll("option").values;
-
 // change location from dropdownmenu
 dropDownTag.addEventListener("change", () => {
   site = dropDownTag.value;
+  console.log(site);
   fetchDates();
 });
 
+let today = new Date();
+let todaysDate = formatDate(today);
+
 let site = dropDownTag.value;
 let parameter = "Level";
-let fromDate = "2022-04-11";
-let toDate = "2022-04-11";
+
+let fromDate = "2023-12-01";
+
+let toDate = todaysDate;
+
+console.log(todaysDate);
 
 export const fetchDates = async () => {
   try {
@@ -36,7 +42,6 @@ export const fetchDates = async () => {
 
     const dateData = await response.json();
 
-    /* console.log(dateData); */
     return dateData;
   } catch (error) {
     console.error("Error", error);
@@ -57,31 +62,25 @@ function formatDate(date) {
     date.getDate().toString().padStart(2, "0")
   );
 }
-const today = new Date();
 
-// One day in seconds
-const oneDay = 24 * 60 * 60;
+// todays date
+// const today = new Date();
 
-// One month in seconds (approximation)
-const oneMonth = Math.round(30.44 * oneDay);
+// one day in seconds
+// const oneDay = 24 * 60 * 60;
+// // two weeks in seconds
+// const twoWeeks = 2 * 7 * 24 * 60 * 60 * 1000;
+// // three months in seconds
+// const threeMonths = oneDay * 90;
+// // console.log(threeMonths);
 
-const twoWeeks = 2 * 7 * 24 * 60 * 60 * 1000;
-// Three months in seconds
-const threeMonths = oneDay * 90;
-// console.log(threeMonths);
+// const dateTwoWeeksAgo = new Date(today.getTime() - twoWeeks);
+// // console.log(today.getTime());
+// const dateThreeMonthsAgo = new Date(today.getTime() - threeMonths);
 
-const dateTwoWeeksAgo = new Date(today.getTime() - twoWeeks);
-// console.log(today.getTime());
-const dateThreeMonthsAgo = new Date(today.getTime() - threeMonths);
-// console.log(today.getTime());
-// const dateOneYearAgo = "";
-
-const todaysDate = formatDate(today);
-const twoWeeksAgoDate = formatDate(dateTwoWeeksAgo);
-const threeMonthsAgoDate = formatDate(dateThreeMonthsAgo);
-
-console.log(todaysDate);
-console.log(twoWeeksAgoDate);
-console.log(threeMonthsAgoDate);
-// const threeMonthsAgo = "";
-// const oneYearAgo = "";
+// const twoWeeksAgoDate = formatDate(dateTwoWeeksAgo);
+// const threeMonthsAgoDate = formatDate(dateThreeMonthsAgo);
+// console.log(twoWeeks);
+// console.log(todaysDate);
+// console.log(twoWeeksAgoDate);
+// console.log(threeMonthsAgoDate);
