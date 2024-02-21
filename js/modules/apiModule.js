@@ -23,12 +23,23 @@ dropDownTag.addEventListener("change", () => {
 });
 
 let today = new Date();
+console.log(today);
 let todaysDate = formatDate(today);
+console.log(todaysDate);
+let todayUnix = Math.floor(today.getTime() / 1000);
+console.log(todayUnix);
+let twoWeeksBackUnix = todayUnix - 1209600;
+console.log(twoWeeksBackUnix);
+let twoWeeksDate = new Date(twoWeeksBackUnix * 1000);
+console.log(twoWeeksDate);
+let fromDate = formatDate(twoWeeksDate);
+console.log(fromDate);
+let twoWeeksBack = twoWeeksBackUnix;
 
 let site = dropDownTag.value;
 let parameter = "Level";
 
-let fromDate = "2023-12-01";
+// let fromDate = twoWeeksBack;
 
 let toDate = todaysDate;
 
