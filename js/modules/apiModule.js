@@ -32,8 +32,6 @@ document.getElementById("yearBtn").value = formatDate(oneYearDate);
 // change location from dropdownmenu
 dropDownTag.addEventListener("change", () => {
   sessionStorage.setItem("site", dropDownTag.value);
-  //site = dropDownTag.value;
-  console.log(site);
   fetchDates();
   location.reload();
 });
@@ -92,24 +90,13 @@ function formatDate(date) {
   );
 }
 
-// todays date
-// const today = new Date();
+document.getElementById("fromDateText").innerText =
+  sessionStorage.getItem("fromDate");
+document.getElementById("toDateText").innerText = todaysDate;
 
-// one day in seconds
-// const oneDay = 24 * 60 * 60;
-// // two weeks in seconds
-// const twoWeeks = 2 * 7 * 24 * 60 * 60 * 1000;
-// // three months in seconds
-// const threeMonths = oneDay * 90;
-// // console.log(threeMonths);
-
-// const dateTwoWeeksAgo = new Date(today.getTime() - twoWeeks);
-// // console.log(today.getTime());
-// const dateThreeMonthsAgo = new Date(today.getTime() - threeMonths);
-
-// const twoWeeksAgoDate = formatDate(dateTwoWeeksAgo);
-// const threeMonthsAgoDate = formatDate(dateThreeMonthsAgo);
-// console.log(twoWeeks);
-// console.log(todaysDate);
-// console.log(twoWeeksAgoDate);
-// console.log(threeMonthsAgoDate);
+document.addEventListener("DOMContentLoaded", function () {
+  var selectedSite = sessionStorage.getItem("site");
+  if (selectedSite) {
+    dropDownTag.value = selectedSite;
+  }
+});

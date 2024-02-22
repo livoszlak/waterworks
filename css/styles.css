@@ -6,7 +6,13 @@ body {
   background-color: #f9fada;
 }
 
-.heroSectiion {
+.chartIndexing {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.heroSection {
+  max-width: 90vw;
+  overflow-x: scroll;
 }
