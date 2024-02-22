@@ -1,6 +1,6 @@
 import { fetchDates } from "./apiModule.js";
 
-(async function () {
+export async function createLineChart() {
   const lineData = await fetchDates();
 
   var threeMonths = [];
@@ -9,7 +9,7 @@ import { fetchDates } from "./apiModule.js";
   });
 
   var labels = [];
-  for (let i = 1; i < threeMonths.length / 3; i++) {
+  for (let i = 1; i < threeMonths.length + 1; i++) {
     labels.push(i);
   }
   console.log(labels);
@@ -36,4 +36,6 @@ import { fetchDates } from "./apiModule.js";
       },
     },
   });
-})();
+}
+
+createLineChart();
