@@ -1,17 +1,20 @@
 import { fetchDates } from "./modules/apiModule";
+import { createLineChart } from "./modules/lineChartModule";
 
-window.onload = function () {
-  const btns = document.querySelectorAll("dateButton");
-  /*   const weeksBtn = document.querySelector("weeksBtn");
-  const monthsBtn = document.querySelector("monthsBtn");
-  const yearBtn = document.querySelector("yearBtn"); */
-  const dropDownTag = document.getElementById("locationDropdown");
+const btns = document.querySelectorAll("dateButton");
+const dropDownTag = document.getElementById("locationDropdown");
 
-  dropDownTag.addEventListener("change", () => {
-    site = dropDownTag.value;
-  });
+// dropDownTag.addEventListener("change", () => {
+//   site = dropDownTag.value;
+//   console.log(site);
+//   fetchDates();
+//   location.reload();
+// });
 
-  btns.forEach(button, function () {
-    button.addEventListener("click", () => {});
-  });
-};
+// btns.forEach(button, function () {
+//   button.addEventListener("click", () => {});
+// });
+
+// if (sessionStorage.getItem("site") == undefined) {
+//   sessionStorage.setItem("site", "Agnesberg");
+// }

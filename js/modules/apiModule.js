@@ -1,7 +1,7 @@
 export const fetchToday = async () => {
   try {
     const response = await fetch(
-      "https://data.goteborg.se/RiverService/v1.1/MeasureSites/8829bff0-535f-4573-a5ab-775d6b20b638?format=json",
+      "https://data.goteborg.se/RiverService/v1.1/MeasureSites/8829bff0-535f-4573-a5ab-775d6b20b638?format=json"
     );
     const data = await response.json();
 
@@ -11,44 +11,60 @@ export const fetchToday = async () => {
   }
 };
 
-fetchToday();
+//fetchToday();
 
 const dropDownTag = document.getElementById("locationDropdown");
+const btns = document.querySelectorAll("dateButton");
 
 // change location from dropdownmenu
 dropDownTag.addEventListener("change", () => {
-  site = dropDownTag.value;
+  sessionStorage.setItem("site", dropDownTag.value);
+  //site = dropDownTag.value;
   console.log(site);
   fetchDates();
+  location.reload();
 });
 
 let today = new Date();
-console.log(today);
 let todaysDate = formatDate(today);
-console.log(todaysDate);
 let todayUnix = Math.floor(today.getTime() / 1000);
-console.log(todayUnix);
 let twoWeeksBackUnix = todayUnix - 1209600;
-console.log(twoWeeksBackUnix);
 let twoWeeksDate = new Date(twoWeeksBackUnix * 1000);
-console.log(twoWeeksDate);
-let fromDate = formatDate(twoWeeksDate);
-console.log(fromDate);
-let twoWeeksBack = twoWeeksBackUnix;
+console.log(formatDate(twoWeeksDate));
 
-let site = dropDownTag.value;
+// let fromDate = formatDate(twoWeeksDate);
+
+btns.forEach((button) => {
+  button.addEventListener("click", () => {
+    sessionStorage.setItem("timespan", this.value);
+    // let fromDate = formatDate(
+    //   today.getTime() - parseInt(sessionStorage.getItem("timespan"))
+    // );
+  });
+});
+
+if (sessionStorage.getItem("site") == undefined) {
+  sessionStorage.setItem("site", "Agnesberg");
+  sessionStorage.setItem("timespan", "1209600");
+}
+//let site = dropDownTag.value;
+let site = sessionStorage.getItem("site");
 let parameter = "Level";
+// let fromDate = formatDate(
+//   today.getTime() - parseInt(sessionStorage.getItem("timespan"))
+// );
 
 // let fromDate = twoWeeksBack;
 
 let toDate = todaysDate;
+let fromDate = sessionStorage.getItem("fromDate");
 
-console.log(todaysDate);
+// console.log(todaysDate);
 
 export const fetchDates = async () => {
   try {
     const response = await fetch(
-      `https://data.goteborg.se/RiverService/v1.1/Measurements/8829bff0-535f-4573-a5ab-775d6b20b638/${site}/${parameter}/${fromDate}/${toDate}?format=json`,
+      `https://data.goteborg.se/RiverService/v1.1/Measurements/8829bff0-535f-4573-a5ab-775d6b20b638/${site}/${parameter}/${fromDate}/${toDate}?format=json`
     );
 
     const dateData = await response.json();
@@ -60,9 +76,6 @@ export const fetchDates = async () => {
 };
 
 fetchDates();
-
-// const date = new Date("year", "month", "day");
-// console.log(date);
 
 function formatDate(date) {
   return (
