@@ -14,7 +14,20 @@ export const fetchToday = async () => {
 //fetchToday();
 
 const dropDownTag = document.getElementById("locationDropdown");
-const btns = document.querySelectorAll("dateButton");
+const btns = document.querySelectorAll(".dateButton");
+
+let today = new Date();
+let todaysDate = formatDate(today);
+let todayUnix = Math.floor(today.getTime() / 1000);
+let twoWeeksBackUnix = todayUnix - 1209600;
+let twoWeeksDate = new Date(twoWeeksBackUnix * 1000);
+document.getElementById("weeksBtn").value = formatDate(twoWeeksDate);
+let threeMonthsBackUnix = todayUnix - 7776000;
+let threeMonthsDate = new Date(threeMonthsBackUnix * 1000);
+document.getElementById("monthsBtn").value = formatDate(threeMonthsDate);
+let oneYearBackUnix = todayUnix - 31536000;
+let oneYearDate = new Date(oneYearBackUnix * 1000);
+document.getElementById("yearBtn").value = formatDate(oneYearDate);
 
 // change location from dropdownmenu
 dropDownTag.addEventListener("change", () => {
@@ -25,27 +38,19 @@ dropDownTag.addEventListener("change", () => {
   location.reload();
 });
 
-let today = new Date();
-let todaysDate = formatDate(today);
-let todayUnix = Math.floor(today.getTime() / 1000);
-let twoWeeksBackUnix = todayUnix - 1209600;
-let twoWeeksDate = new Date(twoWeeksBackUnix * 1000);
-console.log(formatDate(twoWeeksDate));
-
 // let fromDate = formatDate(twoWeeksDate);
 
 btns.forEach((button) => {
   button.addEventListener("click", () => {
-    sessionStorage.setItem("timespan", this.value);
-    // let fromDate = formatDate(
-    //   today.getTime() - parseInt(sessionStorage.getItem("timespan"))
-    // );
+    console.log("hej");
+    sessionStorage.setItem("fromDate", button.value);
+    location.reload();
   });
 });
 
 if (sessionStorage.getItem("site") == undefined) {
   sessionStorage.setItem("site", "Agnesberg");
-  sessionStorage.setItem("timespan", "1209600");
+  sessionStorage.setItem("fromDate", formatDate(twoWeeksDate));
 }
 //let site = dropDownTag.value;
 let site = sessionStorage.getItem("site");
