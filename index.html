@@ -13,34 +13,40 @@
     <title>Waterworks</title>
   </head>
   <body>
-    <h1>Waterworks</h1>
-
+    <img src="/assets/waterworks_logo.svg" alt="logo" />
+    <div class="chartIndexing">
+      <h6 id="fromDateText"></h6>
+      <h5 id="shownLocation"></h5>
+      <h6 id="toDateText"></h6>
+    </div>
     <section class="heroSection">
-      <div style="width: 800px"><canvas id="data"></canvas></div>
-      <div>
-        <select id="locationDropdown">
-          <option value="Agnesberg">Agnesberg</option>
-          <option value="Arketjarn">Arketjärn</option>
-          <option value="Eriksberg">Eriksberg</option>
-          <option value="Garda">Gårda</option>
-          <option value="Harsjo">Härsjö</option>
-          <option value="Kalleredsbacken">Kålleredsbäcken</option>
-          <option value="Landvatter">Landvettersjön</option>
-          <option value="Levgrensvagen">Levgrensvägen</option>
-          <option value="Larjean">Lärjeholm</option>
-          <option value="MolndalCentrum">Mölndal C</option>
-          <option value="Nedsjon">Nedsjön</option>
-          <option value="Rada">Rådasjön</option>
-          <option value="Slussen">Slussen</option>
-          <option value="Stensjon">Stensjön</option>
-          <option value="Tingstad">Tingstad</option>
-          <option value="Torshamnen">Torshamnen</option>
-        </select>
-        <button class="dateButton" id="weeksBtn" value="">Två veckor</button>
-        <button class="dateButton" id="monthsBtn" value="">Tre månader</button>
-        <button class="dateButton" id="yearBtn" value="">Ett år</button>
-      </div>
+      <div style="width: 1000px"><canvas id="data"></canvas></div>
     </section>
+    <div>
+      <select id="locationDropdown">
+        <option value="Agnesberg">Agnesberg</option>
+        <option value="Arketjarn">Arketjärn</option>
+        <option value="Eriksberg">Eriksberg</option>
+        <option value="Garda">Gårda</option>
+        <option value="Harsjo">Härsjö</option>
+        <option value="Kalleredsbacken">Kålleredsbäcken</option>
+        <option value="Landvetter">Landvettersjön</option>
+        <option value="Levgrensvagen">Levgrensvägen</option>
+        <option value="Larjean">Lärjeholm</option>
+        <option value="MolndalCentrum">Mölndal C</option>
+        <option value="Nedsjon">Nedsjön</option>
+        <option value="Rada">Rådasjön</option>
+        <option value="Skars led">Skårs led</option>
+        <option value="Slussen">Slussen</option>
+        <option value="Stensjon">Stensjön</option>
+        <option value="Tingstad">Tingstad</option>
+        <option value="Torshamnen">Torshamnen</option>
+      </select>
+      <button class="dateButton" id="weeksBtn" value="">Två veckor</button>
+      <button class="dateButton" id="monthsBtn" value="">Tre månader</button>
+      <button class="dateButton" id="yearBtn" value="">Ett år</button>
+    </div>
+
     <!-- <div style="width: 800px"><canvas id="data"></canvas></div> -->
     <script type="module" src="js/modules/lineChartModule.js"></script>
   </body>
