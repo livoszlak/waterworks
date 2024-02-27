@@ -57,7 +57,7 @@ export async function createLineChart() {
           borderColor: "#084de0",
           backgroundColor: "#084de0",
           pointBackgroundColor: "#45BF9C",
-          pointBorderColor: "#000000",
+          pointBorderColor: "#084de0",
         },
       ],
     },
