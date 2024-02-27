@@ -1,7 +1,7 @@
 import { fetchToday } from "./js/modules/apiModule.js";
 const data = await fetchToday();
 
-// display today's water level by location in a bar chart
+// display today's water level by location in a basic bar chart
 (async function () {
   var today = [];
 
