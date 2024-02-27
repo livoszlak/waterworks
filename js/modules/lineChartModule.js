@@ -53,9 +53,11 @@ export async function createLineChart() {
       datasets: [
         {
           label: "Water levels",
-          backgroundColor: "rgb(255,   99,   132)",
-          borderColor: "rgb(255,   99,   132)",
           data: dataArray,
+          borderColor: "#084de0",
+          backgroundColor: "#084de0",
+          pointBackgroundColor: "#45BF9C",
+          pointBorderColor: "#000000",
         },
       ],
     },
