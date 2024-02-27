@@ -21,11 +21,31 @@ body {
   animation: fadeIn 2s ease-in-out;
 }
 
+.waveDiv {
+  margin-top: 5rem;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.waveDiv img {
+  width: 200vw;
+  animation: moveInOut 12s linear infinite;
+  position: fixed;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes moveInOut {
+  0% {
+  }
+  100% {
+    transform: translateX(-100vw);
   }
 }
