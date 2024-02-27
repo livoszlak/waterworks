@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -15,6 +18,25 @@ body {
 .heroSection {
   max-width: 90vw;
   overflow-x: scroll;
+}
+
+button {
+  border: none;
+  text-align: inherit;
+  font: inherit;
+  appearance: none;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  margin: 0.3rem;
+  background-color: #45bf9c;
+  border-radius: 3rem;
+}
+select {
+  text-align: inherit;
+  font: inherit;
+  padding: 0.3rem 0 0.3rem 1rem;
+  margin: 0.3rem;
+  background-color: #46b9c0;
+  border-radius: 3rem;
 }
 
 .logo {
