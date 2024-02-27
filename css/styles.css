@@ -52,7 +52,6 @@ select {
 .waveDiv img {
   width: 200vw;
   animation: moveInOut 12s linear infinite;
-  position: fixed;
 }
 
 @keyframes fadeIn {
